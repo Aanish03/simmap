@@ -1,0 +1,78 @@
+#! /bin/bash
+
+echo "wellcome to simple nmap "
+echo "***********************"
+
+echo ""
+echo -e "please enter a target ip : \c"
+
+read target 
+
+echo "ok "
+sleep 1 
+clear 
+
+
+echo "1] port scan with service version "
+ 
+echo ""
+
+echo "2] port scan only "
+
+echo ""
+
+echo "3] port scan with default nmap  script"
+echo ""
+echo "4] nmap scan with ll basic to advance options "
+echo ""
+echo -e "choose type of scan : \c" 
+
+read  scan_type
+
+
+
+
+
+
+sleep 1 
+
+echo "ok........"
+clear 
+
+echo -e "please enter a output file name : \c "
+
+read outputfile 
+
+sleep  1
+
+echo "ok...."
+
+clear 
+
+if [ "$scan_type" == 1  ]
+then 
+nmap -sV -A $target -o $outputfile
+elif [ "$scan_type" == 2 ]
+then 
+nmap  $target -o $outputfile
+elif [ "$scan_type" == 3 ]
+then 
+nmap -sV -A  -sC $target -o $outputfile 
+else
+nmap -sV -A -sC --script=vuln $target -o $outputfile
+fi
+
+
+clear
+echo "*********check results in output file **********"
+
+
+
+
+
+
+
+
+
+
+
